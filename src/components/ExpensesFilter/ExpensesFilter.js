@@ -1,9 +1,9 @@
-import React from "react";
-import "./ExpensesFilter.css";
+/* eslint-disable jsx-a11y/label-has-associated-control, react/prop-types */
+import React from 'react';
+import './ExpensesFilter.css';
 
 const ExpensesFilter = ({ handleFilter }) => {
   const dropdownChangeHandler = (event) => {
-    console.log(event.target.value);
     handleFilter(event.target.value);
   };
 
@@ -11,7 +11,7 @@ const ExpensesFilter = ({ handleFilter }) => {
     <div className="expenses-filter">
       <div className="expenses-filter__control">
         <label>Filter by year</label>
-        <select defaultValue={""} onChange={dropdownChangeHandler}>
+        <select defaultValue="" onChange={dropdownChangeHandler}>
           <option value="2022">2022</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>

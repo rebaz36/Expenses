@@ -1,6 +1,7 @@
-import React from "react";
-import "./NewExpense.css";
-import NewExpenseForm from "./NewExpenseForm";
+/* eslint-disable react/prop-types */
+import React from 'react';
+import './NewExpense.css';
+import NewExpenseForm from './NewExpenseForm';
 
 export default function NewExpense({ ExpensesHandler }) {
   const ExpenseDataHandler = (NewExpenseData) => {
@@ -8,7 +9,6 @@ export default function NewExpense({ ExpensesHandler }) {
       id: Math.random().toString(),
       ...NewExpenseData,
     };
-    console.log(expenseData);
     ExpensesHandler(expenseData);
   };
   return (
