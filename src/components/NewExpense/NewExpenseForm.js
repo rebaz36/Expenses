@@ -16,12 +16,30 @@ export default function NewExpenseForm() {
     setEnteredDate(event.target.value);
   };
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    const newdata = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+    console.log(newdata);
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
+  };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input onChange={titleChangeHandler} type="text" />
+          <input
+            value={enteredTitle}
+            onChange={titleChangeHandler}
+            type="text"
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -30,6 +48,7 @@ export default function NewExpenseForm() {
             type="number"
             min="0.01"
             step="0.01"
+            value={enteredAmount}
           />
         </div>
         <div className="new-expense__control">
@@ -39,6 +58,7 @@ export default function NewExpenseForm() {
             type="date"
             min="2019-01-01"
             max="2022-12-31"
+            value={enteredDate}
           />
         </div>
       </div>
