@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import "./NewExpenseForm.css";
+/* eslint-disable jsx-a11y/label-has-associated-control, react/prop-types */
+import React, { useState } from 'react';
+import './NewExpenseForm.css';
 
-export default function NewExpenseForm() {
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
+export default function NewExpenseForm({ onSaveExpenseData }) {
+  const [enteredTitle, setEnteredTitle] = useState('');
+  const [enteredAmount, setEnteredAmount] = useState('');
+  const [enteredDate, setEnteredDate] = useState('');
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -24,10 +25,10 @@ export default function NewExpenseForm() {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-    console.log(newdata);
-    setEnteredTitle("");
-    setEnteredAmount("");
-    setEnteredDate("");
+    onSaveExpenseData(newdata);
+    setEnteredTitle('');
+    setEnteredAmount('');
+    setEnteredDate('');
   };
 
   return (

@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import "./ExpenseItem.css";
-import Card from "../UI/card/card";
-import ExpenseDate from "./ExpenseDate";
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
+import './ExpenseItem.css';
+import Card from '../UI/card/card';
+import ExpenseDate from './ExpenseDate';
 
 export default function ExpenseItem({ Title, Amount, Date }) {
   const [title, setTitle] = useState(Title);
 
   function clickHandler() {
-    setTitle("Updated!");
+    setTitle('Updated!');
   }
   return (
     <Card className="expense-item">
@@ -16,7 +17,7 @@ export default function ExpenseItem({ Title, Amount, Date }) {
         <h2>{title}</h2>
         <div className="expense-item__price">{Amount}</div>
       </div>
-      <button onClick={clickHandler}>click me</button>
+      <button type="button" onClick={clickHandler}>click me</button>
     </Card>
   );
 }
