@@ -16,7 +16,7 @@ export default function Expenses({ expenses }) {
   return (
     <div>
       <Card className="expenses">
-        <ExpensesFilter handleFilter={handleFilter} />
+        <ExpensesFilter selected={filteredYear} handleFilter={handleFilter} />
         {filteredYear === ''
           ? expenses.map((expense) => (
             <ExpenseItem
