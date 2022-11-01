@@ -11,7 +11,12 @@ const ExpensesFilter = ({ handleFilter, selected }) => {
     <div className="expenses-filter">
       <div className="expenses-filter__control">
         <label>Filter by year</label>
-        <select value={selected} onChange={dropdownChangeHandler}>
+        <select
+          value={selected}
+          placeholder="Select a Year"
+          onChange={dropdownChangeHandler}
+        >
+          <option value="" disabled>Select a Year</option>
           <option value="2022">2022</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>
