@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
 
 function App() {
-  const expenses = [
+  const DummyExpenses = [
     {
       id: 'e1',
       title: 'Toilet Paper',
@@ -26,17 +27,16 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+  const [Expense, setExpense] = useState(DummyExpenses);
+
   const ExpensesHandler = (NewExpenseData) => {
-    const expenseData = {
-      ...expenses,
-      NewExpenseData,
-    };
+    setExpense((prevExpense) => [...prevExpense, NewExpenseData]);
   };
 
   return (
     <div>
       <NewExpense ExpensesHandler={ExpensesHandler} />
-      <Expenses expenses={expenses} />
+      <Expenses expenses={Expense} />
     </div>
   );
 }
