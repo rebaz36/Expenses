@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable no-nested-ternary, react/prop-types */
 import React, { useState } from 'react';
 import './Expenses.css';
 import ExpenseItem from './ExpenseItem';
@@ -7,33 +7,35 @@ import ExpensesFilter from '../ExpensesFilter/ExpensesFilter';
 
 export default function Expenses({ expenses }) {
   const [filteredYear, setFilteredYear] = useState('');
+  const [filteredExpenses, setFilteredExpenses] = useState(expenses);
+
   const handleFilter = (selectedYear) => {
     setFilteredYear(selectedYear);
+    setFilteredExpenses(
+      expenses.filter(
+        (expense) => expense.date.getFullYear().toString() === selectedYear,
+      ),
+    );
   };
 
-  const filteredExpenses = expenses
-    .filter((expense) => expense.date.getFullYear().toString() === filteredYear);
+  let expensesContent = <p className="no-expenses">No expenses found.</p>;
+
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        Title={expense.title}
+        Amount={expense.amount}
+        Date={expense.date}
+      />
+    ));
+  }
+
   return (
     <div>
       <Card className="expenses">
         <ExpensesFilter selected={filteredYear} handleFilter={handleFilter} />
-        {filteredYear === ''
-          ? expenses.map((expense) => (
-            <ExpenseItem
-              key={expense.id}
-              Title={expense.title}
-              Amount={expense.amount}
-              Date={expense.date}
-            />
-          ))
-          : filteredExpenses.map((expense) => (
-            <ExpenseItem
-              key={expense.id}
-              Title={expense.title}
-              Amount={expense.amount}
-              Date={expense.date}
-            />
-          ))}
+        {expensesContent}
       </Card>
     </div>
   );
