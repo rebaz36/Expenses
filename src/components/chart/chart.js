@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ChartBar from './ChartBar';
+
 import './chart.css';
 
 export default function chart({ dataPoints }) {
