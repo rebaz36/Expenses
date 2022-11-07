@@ -1,5 +1,5 @@
-/* eslint-disable no-nested-ternary, react/prop-types */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import ExpensesChart from './ExpensesChart';
 import ExpenseItem from './ExpenseItem';
 import Card from '../UI/card/card';
@@ -42,3 +42,15 @@ export default function Expenses({ expenses }) {
     </div>
   );
 }
+
+// prop type validation
+Expenses.propTypes = {
+  expenses: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+      date: PropTypes.instanceOf(Date).isRequired,
+    }),
+  ).isRequired,
+};
