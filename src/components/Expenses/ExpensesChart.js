@@ -1,6 +1,7 @@
-/* eslint-disable array-callback-return, no-restricted-syntax, react/prop-types */
+/* eslint-disable array-callback-return */
 import React from 'react';
 
+import PropsType from 'prop-types';
 import Chart from '../chart/Chart';
 
 export default function ExpensesChart({ expenses }) {
@@ -26,3 +27,15 @@ export default function ExpensesChart({ expenses }) {
 
   return <Chart dataPoints={chartDataPoints} />;
 }
+
+// props validation
+ExpensesChart.propTypes = {
+  expenses: PropsType.arrayOf(
+    PropsType.shape({
+      id: PropsType.string.isRequired,
+      title: PropsType.string.isRequired,
+      amount: PropsType.number.isRequired,
+      date: PropsType.instanceOf(Date).isRequired,
+    }),
+  ).isRequired,
+};
