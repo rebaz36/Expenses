@@ -1,9 +1,10 @@
 /* eslint-disable no-nested-ternary, react/prop-types */
 import React, { useState } from 'react';
-import './Expenses.css';
+import ExpensesChart from './ExpensesChart';
 import ExpenseItem from './ExpenseItem';
 import Card from '../UI/card/card';
 import ExpensesFilter from '../ExpensesFilter/ExpensesFilter';
+import './Expenses.css';
 
 export default function Expenses({ expenses }) {
   const [filteredYear, setFilteredYear] = useState('');
@@ -35,6 +36,7 @@ export default function Expenses({ expenses }) {
     <div>
       <Card className="expenses">
         <ExpensesFilter selected={filteredYear} handleFilter={handleFilter} />
+        <ExpensesChart expenses={filteredExpenses} />
         {expensesContent}
       </Card>
     </div>
