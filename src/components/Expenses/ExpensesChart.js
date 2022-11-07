@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return, no-restricted-syntax, react/prop-types */
 import React from 'react';
 
-import Chart from '../chart/Chart';
+import Chart from '../chart/Chart.js';
 
 export default function ExpensesChart({ expenses }) {
   const chartDataPoints = [
