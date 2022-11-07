@@ -1,9 +1,10 @@
-/* eslint-disable no-nested-ternary, react/prop-types */
 import React, { useState } from 'react';
-import './Expenses.css';
+import PropTypes from 'prop-types';
+import ExpensesChart from './ExpensesChart';
 import ExpenseItem from './ExpenseItem';
 import Card from '../UI/card/card';
 import ExpensesFilter from '../ExpensesFilter/ExpensesFilter';
+import './Expenses.css';
 
 export default function Expenses({ expenses }) {
   const [filteredYear, setFilteredYear] = useState('');
@@ -35,8 +36,21 @@ export default function Expenses({ expenses }) {
     <div>
       <Card className="expenses">
         <ExpensesFilter selected={filteredYear} handleFilter={handleFilter} />
+        <ExpensesChart expenses={filteredExpenses} />
         {expensesContent}
       </Card>
     </div>
   );
 }
+
+// prop type validation
+Expenses.propTypes = {
+  expenses: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+      date: PropTypes.instanceOf(Date).isRequired,
+    }),
+  ).isRequired,
+};

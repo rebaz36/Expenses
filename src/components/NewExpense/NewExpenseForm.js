@@ -22,7 +22,7 @@ export default function NewExpenseForm({ close, onSaveExpenseData }) {
 
     const newdata = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
     onSaveExpenseData(newdata);
