@@ -20,7 +20,7 @@
     "import/no-unresolved": "off",
     "no-shadow": "off",
     "react/prop-types": "off",
-    "react/missing-filename-extension": "off"
+    "import/extensions": "off"
   },
   "ignorePatterns": [
     "dist/",
